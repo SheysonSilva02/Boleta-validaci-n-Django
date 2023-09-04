@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <style>
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 7px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            padding: 20px;
+            min-width: 300px; 
+            width: 101%;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 18px;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #5FC2BC;
+            overflow-x: hidden; 
+        }
+
+        .boleta {
+            width: 110%; 
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 5px;
+            background-color: white;
+            margin-top: 100px;
+            text-align: left;
+        }
+
+        .boleta div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 5px 0; 
+        }
+
+        .boleta p1 {
+            margin: 0;
+            text-transform: uppercase;
+            border: 2px solid black; 
+            width: 48%; 
+            border-radius: 5px;
+            padding: 10px; 
+        }
+
+    
+        .button {
+            width: 48%; 
+            padding: 20px;
+            background-color: #2D265D;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #301C1C;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; 
+            width: 123%;
+            margin-top: 20px;
+        }
+
+        .button:last-child {
+            margin-top: 10px; 
+        }
+        .boleta p {
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BOLETA DE PAGOS</h1>
+    </header>
+
+    <div class="boleta">
+        <div>
+            <p><strong>Código:</strong></p>
+            <p1>{{ empleado.codigo|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Nombre:</strong></p>
+            <p1>{{ empleado.nombre|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Fecha de Ingreso:</strong></p>
+            <p1>{{ empleado.fecha_ingreso|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Cargo:</strong></p>
+            <p1>{{ empleado.cargo|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Área:</strong></p>
+            <p1>{{ empleado.area|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Sueldo Total:</strong></p>
+            <p1>${{ empleado.sueldo_total|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Descuento:</strong></p>
+            <p1>${{ empleado.calcular_descuento|upper }}</p1>
+        </div>
+        <div>
+            <p><strong>Sueldo Neto:</strong></p>
+            <p1>${{ empleado.calcular_sueldo_neto|upper }}</p1>
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button class="button" onclick="window.location.href = '{% url 'registro_empleado' %}';">VOLVER AL REGISTRO</button>
+        <button class="button" onclick="window.location.href = '{% url 'login' %}';">INICIAR SESION</button>
+    </div>
+</body>
+{% endblock %}
+
+
+
+
+
